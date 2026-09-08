@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the offline copies the notebooks fall back to when the MP API is unavailable.
+"""Build the saved copies the notebooks fall back to when the MP API is unavailable.
 
 Run this once, from the repository root, with a Materials Project API key:
 
@@ -8,13 +8,14 @@ Run this once, from the repository root, with a Materials Project API key:
 It writes two things into Data/:
 
     Hands_on_session1_data.xlsx   one sheet per summary.search query in the notebooks
-    pd_entries/<System>.json.gz   entries for each candidate system in the section D assignment
+    Li-Ni-O_entries.json.gz       the entries behind the section D assignment
 
-Re-run it whenever the queries in the notebooks change, or to refresh against a
+In the notebooks these are reached by uncommenting the line marked
+"## If the MP API is not working" in each cell that queries MP.
+
+Re-run this whenever the queries in the notebooks change, or to refresh against a
 newer Materials Project release.
 """
-import gzip
-import json
 import os
 import sys
 from getpass import getpass
@@ -26,7 +27,6 @@ from mp_api.client import MPRester
 
 DATA = Path("Data")
 XLSX = DATA / "Hands_on_session1_data.xlsx"
-PD_DIR = DATA / "pd_entries"
 
 # Fields requested by the in-class notebook (section A) --------------------------
 SUMMARY_FIELDS = ["material_id", "formula_pretty", "chemsys", "nelements", "nsites",
@@ -48,12 +48,9 @@ SUMMARY_QUERIES = {
 # Fields requested by the preclass notebook (section 4) --------------------------
 PRECLASS_FIELDS = ["material_id", "formula_pretty", "band_gap", "energy_above_hull"]
 
-# Candidate systems for the section D assignment --------------------------------
-CANDIDATE_SYSTEMS = [
-    ["Li", "Co", "O"], ["Li", "Mn", "O"], ["Li", "Ni", "O"], ["Li", "Ti", "O"],
-    ["Li", "Al", "O"], ["Na", "Fe", "O"], ["Na", "Mn", "O"], ["Na", "Co", "O"],
-    ["Mg", "Fe", "O"], ["Zn", "Fe", "O"], ["Ca", "Ti", "O"], ["Ba", "Ti", "O"],
-]
+# The one system every student builds in the section D assignment ----------------
+ASSIGNMENT_ELEMENTS = ["Li", "Ni", "O"]
+ASSIGNMENT_PATH = DATA / f"{'-'.join(ASSIGNMENT_ELEMENTS)}_entries.json.gz"
 THERMO_TYPE = "GGA_GGA+U"
 
 
@@ -77,9 +74,8 @@ def main():
 
     api_key = os.getenv("MP_API_KEY", "").strip() or getpass("Materials Project API key: ").strip()
     if not api_key:
-        sys.exit("An API key is required to build the offline copies.")
+        sys.exit("An API key is required to build the saved copies.")
 
-    PD_DIR.mkdir(exist_ok=True)
     sheets = {}
 
     with MPRester(api_key) as mpr:
@@ -103,30 +99,28 @@ def main():
             sheets["preclass_LiFePO4"]["material_id"].astype(str)
         print(f"  preclass_LiFePO4 {len(sheets['preclass_LiFePO4']):4d} rows")
 
-        print("\nSection D candidate systems")
-        for elements in CANDIDATE_SYSTEMS:
-            system = "-".join(elements)
-            entries = mpr.get_entries_in_chemsys(
-                elements, compatible_only=True,
-                additional_criteria={"thermo_types": [THERMO_TYPE]})
-            path = PD_DIR / f"{system}.json.gz"
-            dumpfn(entries, path)
-            print(f"  {system:10s} {len(entries):5d} entries  {path.stat().st_size/1024:6.1f} KB")
+        print("\nSection D assignment system")
+        entries = mpr.get_entries_in_chemsys(
+            ASSIGNMENT_ELEMENTS, compatible_only=True,
+            additional_criteria={"thermo_types": [THERMO_TYPE]})
+        dumpfn(entries, ASSIGNMENT_PATH)
+        print(f"  {'-'.join(ASSIGNMENT_ELEMENTS):10s} {len(entries):5d} entries  "
+              f"{ASSIGNMENT_PATH.stat().st_size / 1024:6.1f} KB")
 
     # A record of when and against what these copies were made.
     sheets["_provenance"] = pd.DataFrame([
         {"key": "mp_db_version", "value": db_version},
         {"key": "generated_utc", "value": pd.Timestamp.utcnow().isoformat()},
         {"key": "thermo_type", "value": THERMO_TYPE},
+        {"key": "assignment_system", "value": "-".join(ASSIGNMENT_ELEMENTS)},
     ])
 
     with pd.ExcelWriter(XLSX, engine="openpyxl") as writer:
         for sheet, frame in sheets.items():
             frame.to_excel(writer, sheet_name=sheet, index=False)
 
-    print(f"\nWrote {XLSX} ({XLSX.stat().st_size/1024:.1f} KB) with sheets: {list(sheets)}")
-    total = sum(p.stat().st_size for p in PD_DIR.glob('*.json.gz'))
-    print(f"Wrote {len(list(PD_DIR.glob('*.json.gz')))} files to {PD_DIR} ({total/1024:.1f} KB total)")
+    print(f"\nWrote {XLSX} ({XLSX.stat().st_size / 1024:.1f} KB) with sheets: {list(sheets)}")
+    print(f"Wrote {ASSIGNMENT_PATH} ({ASSIGNMENT_PATH.stat().st_size / 1024:.1f} KB)")
 
 
 if __name__ == "__main__":
