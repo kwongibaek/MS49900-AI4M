@@ -36,29 +36,5 @@
     "bytes": 2863,
     "downloaded": "2026-09-08",
     "description": "Crystallographic CIF fixture from a pinned public pymatgen commit; included as a reproducible structure-format example"
-  },
-  "oqmd_li_fe_p_o_contains_sample.json": {
-    "url": "https://oqmd.org/oqmdapi/formationenergy",
-    "request_url": "https://oqmd.org/oqmdapi/formationenergy?fields=name%2Centry_id%2Cspacegroup%2Cntypes%2Cnatoms%2Cdelta_e%2Cstability%2Cband_gap%2Cprototype%2Cicsd_id&limit=20&offset=0&format=json&filter=element_set%3D%28Li%2CFe%2CP%2CO%29",
-    "params": {
-      "fields": "name,entry_id,spacegroup,ntypes,natoms,delta_e,stability,band_gap,prototype,icsd_id",
-      "limit": 20,
-      "offset": 0,
-      "format": "json",
-      "filter": "element_set=(Li,Fe,P,O)"
-    },
-    "http_status": 200,
-    "oqmd_api_timestamp": "2026-09-08 00:34:15 (timezone not specified by response)",
-    "sha256": "208baac36f76623f1d0c74311f58b27c9e9d748d00608513383113e1ec72af3a",
-    "bytes": 4587,
-    "rows": 20,
-    "data_available": 25,
-    "description": "Live unauthenticated OQMD REST response. Filter requires Li, Fe, P, and O but permits additional elements; ntypes shows 4–6 in this sample.",
-    "official_docs": [
-      "https://oqmd.org/api/",
-      "https://static.oqmd.org/static/docs/restful.html"
-    ],
-    "retrieved": "2026-09-08",
-    "retrieved_date": "2026-09-08"
   }
 }
