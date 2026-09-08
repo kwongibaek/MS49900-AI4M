@@ -22,8 +22,9 @@ from getpass import getpass
 from pathlib import Path
 
 import pandas as pd
-from monty.serialization import dumpfn
+from monty.serialization import dumpfn, loadfn
 from mp_api.client import MPRester
+from pymatgen.analysis.phase_diagram import PhaseDiagram
 
 DATA = Path("Data")
 XLSX = DATA / "Hands_on_session1_data.xlsx"
@@ -68,6 +69,28 @@ def summary_to_frame(docs):
     return pd.DataFrame(rows, columns=FRAME_COLUMNS)
 
 
+def json_safe(entries):
+    """Make the entries survive a JSON round-trip printing the same way they went in.
+
+    Two fields do not come back unchanged, and both are ones the notebook shows to students.
+
+    - entry.data["oxidation_states"] is keyed by pymatgen Element objects, and JSON object keys
+      have to be strings. pymatgen stores the same thing by element symbol wherever it
+      serialises, so we do that here too.
+    - entry.entry_id is an emmet EntryID. The decoder cannot rebuild that class, so it reloads as
+      a bare dict and prints as one, and the id it serialises is the internal alphanumeric form
+      rather than the mp-19017-GGA+U that the live object prints. The notebook only ever prints
+      str(entry_id), so we store exactly that string.
+    """
+    for entry in entries:
+        states = entry.data.get("oxidation_states")
+        if isinstance(states, dict):
+            entry.data["oxidation_states"] = {
+                getattr(el, "symbol", str(el)): value for el, value in states.items()}
+        entry.entry_id = str(entry.entry_id)
+    return entries
+
+
 def main():
     if not DATA.is_dir():
         sys.exit("Run this from the repository root; Data/ was not found here.")
@@ -103,7 +126,16 @@ def main():
         entries = mpr.get_entries_in_chemsys(
             ASSIGNMENT_ELEMENTS, compatible_only=True,
             additional_criteria={"thermo_types": [THERMO_TYPE]})
-        dumpfn(entries, ASSIGNMENT_PATH)
+        dumpfn(json_safe(entries), ASSIGNMENT_PATH)
+
+        ## Read it straight back. A copy that reloads into something else is worse than no copy,
+        ## and section D prints all three of these.
+        restored = loadfn(ASSIGNMENT_PATH)
+        assert all(isinstance(e.entry_id, str) for e in restored), "entry_id did not survive"
+        fingerprint = lambda es: sorted((str(e.entry_id), e.composition.reduced_formula,
+                                         round(e.energy_per_atom, 9)) for e in es)
+        assert fingerprint(restored) == fingerprint(entries), "round-trip changed the entries"
+        PhaseDiagram(restored)
         print(f"  {'-'.join(ASSIGNMENT_ELEMENTS):10s} {len(entries):5d} entries  "
               f"{ASSIGNMENT_PATH.stat().st_size / 1024:6.1f} KB")
 

@@ -71,5 +71,19 @@
     "bytes": 9362,
     "downloaded": "2026-09-08",
     "description": "Original compressed matminer snapshot of experimental thermal-conductivity records collected from Citrine; bytes preserved"
+  },
+  "Hands_on_session1_data.xlsx": {
+    "url": "https://api.materialsproject.org/materials/summary/",
+    "sha256": "cad2a86c61130359d7c15d8907214eb0e022e37a18d08bee1548ff06ffd9d113",
+    "bytes": 16960,
+    "downloaded": "2026-09-09",
+    "description": "Saved results of the summary.search queries in the preclass and in-class notebooks, Materials Project DB 2026.04.13. Regenerate with tools/make_offline_fallback.py. Materials Project data is CC BY 4.0."
+  },
+  "Li-Ni-O_entries.json.gz": {
+    "url": "https://api.materialsproject.org/materials/thermo/",
+    "sha256": "2aabb3f368d18a6dcf30990e2b2b2c0c2595608af3c990b5be2f633d75062565",
+    "bytes": 268196,
+    "downloaded": "2026-09-09",
+    "description": "get_entries_in_chemsys(['Li','Ni','O'], compatible_only=True, thermo_types=['GGA_GGA+U']) from Materials Project DB 2026.04.13; the entries behind the section D assignment. Regenerate with tools/make_offline_fallback.py. Materials Project data is CC BY 4.0."
   }
 }
