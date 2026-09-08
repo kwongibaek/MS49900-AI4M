@@ -1,0 +1,3 @@
+# Preserve published data bytes for SHA-256 checks on every operating system.
+Data/* -text
+Data/*.csv whitespace=cr-at-eol

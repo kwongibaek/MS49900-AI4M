@@ -1,0 +1,64 @@
+{
+  "steel_strength.csv": {
+    "derived_from": "steel_strength.json.gz",
+    "rows": 312,
+    "columns": [
+      "formula",
+      "c",
+      "mn",
+      "si",
+      "cr",
+      "ni",
+      "mo",
+      "v",
+      "n",
+      "nb",
+      "co",
+      "w",
+      "al",
+      "ti",
+      "yield strength",
+      "tensile strength",
+      "elongation"
+    ],
+    "description": "CSV derived from the public steel_strength source with all original rows and values retained. Only the derived CSV is included in this Data folder.",
+    "sha256": "b95e99e5d04503654d640812f7ee083950fdd35be93f443157120d414132ac6c",
+    "bytes": 58112,
+    "verification": "01 checks the SHA-256 of this exact CSV before reading it.",
+    "original_source": {
+      "url": "https://ndownloader.figshare.com/files/13354691",
+      "sha256": "e36501d7057cd833223bb8ed9948668b5ac90fd585d29a749f45af51c1d7f6ad"
+    }
+  },
+  "LiFePO4.cif": {
+    "url": "https://raw.githubusercontent.com/materialsproject/pymatgen/0428f232a569ffe6b16fa030d38ea35a56d70fd6/test-files/cif/LiFePO4.cif",
+    "sha256": "b42244a2350f503eee314998a14c155e047d9cba0949f15edd29d509bfabe36f",
+    "bytes": 2863,
+    "downloaded": "2026-09-08",
+    "description": "Crystallographic CIF fixture from a pinned public pymatgen commit; included as a reproducible structure-format example"
+  },
+  "oqmd_li_fe_p_o_contains_sample.json": {
+    "url": "https://oqmd.org/oqmdapi/formationenergy",
+    "request_url": "https://oqmd.org/oqmdapi/formationenergy?fields=name%2Centry_id%2Cspacegroup%2Cntypes%2Cnatoms%2Cdelta_e%2Cstability%2Cband_gap%2Cprototype%2Cicsd_id&limit=20&offset=0&format=json&filter=element_set%3D%28Li%2CFe%2CP%2CO%29",
+    "params": {
+      "fields": "name,entry_id,spacegroup,ntypes,natoms,delta_e,stability,band_gap,prototype,icsd_id",
+      "limit": 20,
+      "offset": 0,
+      "format": "json",
+      "filter": "element_set=(Li,Fe,P,O)"
+    },
+    "http_status": 200,
+    "oqmd_api_timestamp": "2026-09-08 00:34:15 (timezone not specified by response)",
+    "sha256": "208baac36f76623f1d0c74311f58b27c9e9d748d00608513383113e1ec72af3a",
+    "bytes": 4587,
+    "rows": 20,
+    "data_available": 25,
+    "description": "Live unauthenticated OQMD REST response. Filter requires Li, Fe, P, and O but permits additional elements; ntypes shows 4–6 in this sample.",
+    "official_docs": [
+      "https://oqmd.org/api/",
+      "https://static.oqmd.org/static/docs/restful.html"
+    ],
+    "retrieved": "2026-09-08",
+    "retrieved_date": "2026-09-08"
+  }
+}
