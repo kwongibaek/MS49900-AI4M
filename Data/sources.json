@@ -36,5 +36,40 @@
     "bytes": 2863,
     "downloaded": "2026-09-08",
     "description": "Crystallographic CIF fixture from a pinned public pymatgen commit; included as a reproducible structure-format example"
+  },
+  "Li-Fe-P-O_entries.json": {
+    "url": "https://raw.githubusercontent.com/materialsproject/pymatgen/0428f232a569ffe6b16fa030d38ea35a56d70fd6/test-files/entries/Li-Fe-P-O_entries.json",
+    "sha256": "546dd38af1a7f8cabc83140d07a61e1c6d01809cb798a8ea853c33a317ae8d02",
+    "bytes": 444837,
+    "downloaded": "2026-09-08",
+    "description": "Historical MP-derived computed-entry fixture from a pinned public pymatgen commit; not a current MP database snapshot"
+  },
+  "steel_strength.json.gz": {
+    "url": "https://ndownloader.figshare.com/files/13354691",
+    "sha256": "e36501d7057cd833223bb8ed9948668b5ac90fd585d29a749f45af51c1d7f6ad",
+    "bytes": 14945,
+    "downloaded": "2026-09-08",
+    "description": "Original compressed matminer snapshot of the experimental Citrine steel-strength dataset; bytes preserved"
+  },
+  "ucsb_thermoelectrics.json.gz": {
+    "url": "https://ndownloader.figshare.com/files/28333845",
+    "sha256": "7d0c9c74fd52995b876bd251a7732b5498314702441fa463197fb492be68ecc0",
+    "bytes": 43181,
+    "downloaded": "2026-09-08",
+    "description": "Original compressed matminer snapshot of the experimental UCSB/Citrine thermoelectrics compilation; bytes preserved"
+  },
+  "matbench_expt_gap.json.gz": {
+    "url": "https://ml.materialsproject.org/projects/matbench_expt_gap.json.gz",
+    "sha256": "783e7d1461eb83b00b2f2942da4b95fda5e58a0d1ae26b581c24cf8a82ca75b2",
+    "bytes": 37200,
+    "downloaded": "2026-09-08",
+    "description": "Original compressed Matbench snapshot of composition-deduplicated experimental band gaps from Zhuo et al.; bytes preserved"
+  },
+  "citrine_thermal_conductivity.json.gz": {
+    "url": "https://ndownloader.figshare.com/files/13314470",
+    "sha256": "8490997195d6ec912705a5b2322726e53a72c26143a7e63fe0f962ccc6232b2c",
+    "bytes": 9362,
+    "downloaded": "2026-09-08",
+    "description": "Original compressed matminer snapshot of experimental thermal-conductivity records collected from Citrine; bytes preserved"
   }
 }
