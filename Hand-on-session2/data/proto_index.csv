@@ -1,0 +1,16 @@
+file,group,label,material_id,formula,spacegroup,spacegroup_number,crystal_system,nsites,vpa,density,e_hull
+proto_rutile_TiO2.cif,rutile,TiO2,mp-2657,TiO2,P4_2/mnm,136,Tetragonal,12,10.4354,4.2362,0.0436
+proto_rutile_SnO2.cif,rutile,SnO2,mp-856,SnO2,P4_2/mnm,136,Tetragonal,6,12.1369,6.8732,0.0
+proto_rutile_GeO2.cif,rutile,GeO2,mp-470,GeO2,P4_2/mnm,136,Tetragonal,6,9.334,6.2051,0.0
+proto_rutile_RuO2.cif,rutile,RuO2,mp-825,RuO2,P4_2/mnm,136,Tetragonal,6,10.4193,7.0691,0.0
+proto_rutile_IrO2.cif,rutile,IrO2,mp-2723,IrO2,P4_2/mnm,136,Tetragonal,6,10.7467,11.5483,0.0
+proto_perovskite_SrTiO3.cif,perovskite,SrTiO3,mp-5229,SrTiO3,Pm-3m,221,Cubic,5,11.9801,5.0865,0.0005
+proto_perovskite_BaTiO3.cif,perovskite,BaTiO3,mp-2998,BaTiO3,Pm-3m,221,Cubic,10,12.8739,6.0157,0.0148
+proto_perovskite_KNbO3.cif,perovskite,KNbO3,mp-935811,KNbO3,Pm-3m,221,Cubic,5,13.0822,4.5696,0.0077
+proto_perovskite_KTaO3.cif,perovskite,KTaO3,mp-3614,KTaO3,Pm-3m,221,Cubic,5,12.7509,6.9814,0.0
+proto_perovskite_BaZrO3.cif,perovskite,BaZrO3,mp-3834,BaZrO3,Pm-3m,221,Cubic,5,14.9491,6.1438,0.0001
+proto_spinel_MgAl2O4.cif,spinel,MgAl2O4,mp-3536,MgAl2O4,Fd-3m,227,Cubic,14,9.4213,3.5821,0.0
+proto_spinel_ZnAl2O4.cif,spinel,ZnAl2O4,mp-2908,Al2ZnO4,Fd-3m,227,Cubic,14,9.4034,4.6259,0.0
+proto_spinel_MgCr2O4.cif,spinel,MgCr2O4,mp-19202,MgCr2O4,Fd-3m,227,Cubic,14,10.4341,4.3718,0.0
+proto_spinel_ZnFe2O4.cif,spinel,ZnFe2O4,mp-19313,Zn(FeO2)2,Fd-3m,227,Cubic,14,10.7187,5.3358,0.0
+proto_spinel_CoAl2O4.cif,spinel,CoAl2O4,mp-36447,Al2CoO4,Fd-3m,227,Cubic,14,9.4213,4.454,0.0217
