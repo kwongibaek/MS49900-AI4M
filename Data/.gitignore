@@ -1,3 +1,4 @@
-calisol23_test.csv
-calisol23_test_labels.csv
+*_test.csv
+*_test_labels.csv
+*_split_manifest.json
 access_codes*.csv
