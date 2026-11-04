@@ -1,0 +1,23 @@
+{
+ "description": "Materials Project reference phases relaxed with SevenNet for Hands-on session 8 (advanced)",
+ "model": "7net-0",
+ "fmax": 0.05,
+ "steps": 300,
+ "optimizer": "ASE FIRE on FrechetCellFilter (positions and cell)",
+ "sevenn_version": "0.13.0",
+ "torch_version": "2.11.0+cu128",
+ "device": "cuda",
+ "n_entries": 88,
+ "n_converged": 88,
+ "seconds": 313.6,
+ "created": "2026-11-04T13:05:13+09:00",
+ "input": {
+  "file": "mp_LiPS_references.json.gz",
+  "sha256": "2cc3b3e0921b97ba2b34454977f6eea3c79c260da9fd19c9b2bf859868d819d2"
+ },
+ "output": {
+  "file": "mp_LiPS_sevennet_energies.csv",
+  "sha256": "4cec6484e39fe00f297184321ef9294a6109be663843cab6be11e539a513cea4"
+ },
+ "citation": "Y. Park, J. Kim, S. Hwang, S. Han, J. Chem. Theory Comput. 20, 4857 (2024)"
+}
