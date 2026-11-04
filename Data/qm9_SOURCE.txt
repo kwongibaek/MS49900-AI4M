@@ -1,0 +1,17 @@
+QM9 subset used in Hands-on session 8 (MS49900 AI for Materials Science, 2026).
+
+Source: R. Ramakrishnan, P. O. Dral, M. Rupp, O. A. von Lilienfeld, 'Quantum chemistry structures and
+properties of 134 kilo molecules', Scientific Data 1, 140022 (2014), doi:10.1038/sdata.2014.22.
+Data: figshare collection 10.6084/m9.figshare.c.978904 (v5); article 1057646 'Data for 133885 GDB-9 molecules'
+(doi:10.6084/m9.figshare.978904_D12) and article 1057644 'Uncharacterized' (doi:10.6084/m9.figshare.978904_D10).
+Licence: CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/), read from the figshare API on 2026-11-04.
+
+Original file: dsgdb9nsd.xyz.tar.bz2, 86144227 bytes, md5 ad1ebd51ee7f5b3a6e32e974e5d54012, sha256 3a63848ac80691bdb8d41834b575afad345b9300d7a2db0c38adb7f6eaa8360c
+Uncharacterized list: uncharacterized.txt, sha256 3aa5115d540b356de94791d4a74c3bf1ed91c469ecf52a4f5d7cc0506fe02e24
+
+Processing: relaxed-geometry SMILES; HOMO, LUMO and gap converted from Hartree to eV (x 27.211386);
+uncharacterized molecules removed; RDKit sanitize; molecules with a formal charge removed; canonical
+SMILES de-duplicated; random sample of 20000 with seed 0.
+Counts: records 133885, uncharacterized_dropped 3054, rdkit_failed 612, charged_dropped 139, duplicates_dropped 131, clean 129949, sampled 20000
+
+Output: qm9_subset_20k.csv, sha256 fb734353b28a557ebdcfe52efb1f0ec4a4fd2a1d792cbbe99a03e521d8faee29
