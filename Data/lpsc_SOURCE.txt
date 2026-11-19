@@ -1,0 +1,22 @@
+Li6PS5Cl DFT data and SevenNet checkpoints used in Hands-on session 7 (MLIP) of MS49900 AI for Materials Science, 2026.
+
+Source: MDIL-SNU/sevennet_tutorial (https://github.com/MDIL-SNU/sevennet_tutorial),
+commit 80b1126c542363c061154fd531d1a0bb34fc5b07 (2025-09-05). The repository states no licence;
+the files are copied unchanged (extxyz files gzip-compressed) for teaching, with credit to MDIL, Seoul National University.
+SevenNet: Y. Park et al., J. Chem. Theory Comput. 20, 4857 (2024), doi:10.1021/acs.jctc.4c00190.
+
+| file in Data/ | original path | original bytes | original sha256 |
+| --- | --- | --- | --- |
+| lpsc_600K.extxyz.gz | CMSS_DFT_2025/data/600K.extxyz | 3746018 | 4aba45eedbcd486b58941da090a9e1687e81bb7bacd024e54f73c1497b9c0287 |
+| lpsc_1200K.extxyz.gz | CMSS_DFT_2025/data/1200K.extxyz | 3745838 | f14a9090aea3e52857f71c6cb69d0e03c70269b89c02fa6cf8a7a001264ec557 |
+| lpsc_test_md.extxyz.gz | CMSS_DFT_2025/data/test_md.extxyz | 8813940 | 97c1824bf74448db8d8a7ead5c3927ca1f4f627c53f64f921af032351cdf6cb4 |
+| lpsc_eos.extxyz.gz | data/evaluation/eos.extxyz | 720366 | 4210c83aa4a81a87748dd7a42388d9ff725b59b95c84dd3d1eb63cd9de428ad6 |
+| sevennet_0_small_checkpoint.pth | CMSS_DFT_2025/pretrained/checkpoint_small.pth | 1312611 | 8ddfd0b4b38386f53facd8c39111864b8b55733e64a3df2706b08cb56da52264 |
+| lpsc_finetuned_checkpoint.pth | CMSS_DFT_2025/Part2_Fine_tuning/answer/checkpoint_fine_tuned.pth | 1317654 | e241887e927dc2e1b4ca459ca065e2f1cec31c806eb49c7714d1bc616d63666b |
+
+Contents
+- lpsc_600K / lpsc_1200K: 85 DFT MD snapshots each of a 416-atom Li6PS5Cl cell (energy, forces, stress).
+- lpsc_test_md: 200 DFT MD snapshots used as the test set.
+- lpsc_eos: 11 scaled cells of Li6PS5Cl with DFT energies (energy-volume curve; Materials Project-compatible PBE settings).
+- sevennet_0_small_checkpoint: the small pretrained SevenNet model fine-tuned in class.
+- lpsc_finetuned_checkpoint: that model fine-tuned on the Li6PS5Cl data, used in the post-class assignment if a student has no checkpoint of their own.
