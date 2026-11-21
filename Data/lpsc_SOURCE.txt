@@ -19,4 +19,4 @@ Contents
 - lpsc_test_md: 200 DFT MD snapshots used as the test set.
 - lpsc_eos: 11 scaled cells of Li6PS5Cl with DFT energies (energy-volume curve; Materials Project-compatible PBE settings).
 - sevennet_0_small_checkpoint: the small pretrained SevenNet model fine-tuned in class.
-- lpsc_finetuned_checkpoint: that model fine-tuned on the Li6PS5Cl data, used in the post-class assignment if a student has no checkpoint of their own.
+- lpsc_finetuned_checkpoint: that model fine-tuned on the Li6PS5Cl data, used in the post-class notebook if a student has no checkpoint of their own.
